@@ -12,7 +12,7 @@ from pathlib import Path
 SEED = 42
 
 CONTRACT_TYPES = ["Month-to-Month", "One Year", "Two Year"]
-INTERNET_SERVICES = ["DSL", "Fiber Optic", "None"]
+INTERNET_SERVICES = ["DSL", "Fiber Optic", "No Internet"]
 PAYMENT_METHODS = ["Credit Card", "Bank Transfer", "Electronic Check", "Mailed Check"]
 
 
@@ -36,7 +36,7 @@ def generate_churn_data(n: int = 7_000, seed: int = SEED) -> pd.DataFrame:
         + 1.5 * (contract == "Month-to-Month").astype(float)
         - 1.0 * (contract == "Two Year").astype(float)
         + 0.8 * (internet == "Fiber Optic").astype(float)
-        - 0.5 * (internet == "None").astype(float)
+        - 0.5 * (internet == "No Internet").astype(float)
         - 0.03 * tenure_months                        # longer tenure → less churn
         + 0.02 * monthly_charges                      # higher charges → more churn
         + 0.25 * support_calls_6m                     # more complaints → more churn

@@ -25,7 +25,7 @@ def generate(n: int = typer.Option(7000, help="Number of customers to generate")
     df = load_or_generate(DATA_DIR, n)
     churn_rate = df["churned"].mean()
     console.print(f"[green]Dataset ready:[/green] {len(df):,} rows | "
-                  f"churn rate {churn_rate:.1%} → {DATA_DIR}/churn_data.csv")
+                  f"churn rate {churn_rate:.1%} -> {DATA_DIR}/churn_data.csv")
 
 
 @app.command()
@@ -59,7 +59,7 @@ def train():
 
 @app.command()
 def run_all():
-    """End-to-end: generate → EDA → train → evaluate."""
+    """End-to-end: generate -> EDA -> train -> evaluate."""
     console.print("[bold cyan]Step 1/3 — Generating dataset[/bold cyan]")
     generate(n=7000)
     console.print("\n[bold cyan]Step 2/3 — Running EDA[/bold cyan]")
